@@ -1,0 +1,18 @@
+{
+  "id": "openclaw-observer-agents",
+  "name": "OpenClaw Observer Agents",
+  "description": "Crawls session transcripts with lightweight Gemini observer agents to extract facts, patterns, and timelines into the memory-plus candidate store.",
+  "version": "1.0.0",
+  "kind": "runtime",
+  "configSchema": {
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+      "agentId": { "type": "string", "minLength": 1 },
+      "agentIds": { "type": "array", "items": { "type": "string", "minLength": 1 } },
+      "model": { "type": "string", "minLength": 1 },
+      "autoRunOnCompaction": { "type": "boolean" },
+      "debug": { "type": "boolean" }
+    }
+  }
+}
