@@ -4,6 +4,9 @@
   "description": "Crawls session transcripts with lightweight Gemini observer agents to extract facts, patterns, and timelines into the memory-plus candidate store.",
   "version": "1.0.0",
   "kind": "runtime",
+  "activation": {
+    "onStartup": true
+  },
   "configSchema": {
     "type": "object",
     "additionalProperties": false,
