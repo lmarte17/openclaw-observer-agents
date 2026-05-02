@@ -12,7 +12,7 @@ This extension is designed to feed `openclaw-memory-plus`. It scans unprocessed 
   - fact hunter: semantic facts, preferences, and domain knowledge
   - timeline tracker: events and decisions
   - context weaver: patterns and relationships
-- Writes candidates to the memory-plus candidate store.
+- Writes candidates to the memory-plus daily JSONL candidate queue.
 - Runs automatically on startup and optionally before compaction.
 - Exposes manual tools for status checks and forced runs.
 
@@ -57,6 +57,12 @@ Watermarks are stored per agent at:
 
 Candidates are written into the corresponding memory-plus candidate store. They are candidates, not necessarily promoted durable memories; use memory-plus promotion or flush flows when immediate promotion is needed.
 
+Candidate files use the same daily JSONL layout as memory-plus passive capture:
+
+```text
+.openclaw/agents/<agentId>/memory-plus/candidates/YYYY/YYYY-MM-DD.jsonl
+```
+
 ## Development
 
 ```bash
@@ -68,4 +74,3 @@ There is also a local smoke script:
 ```bash
 node run-test.mjs
 ```
-

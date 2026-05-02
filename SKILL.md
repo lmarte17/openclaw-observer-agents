@@ -26,13 +26,18 @@ For each unprocessed session file, the pipeline runs three parallel Gemini analy
 2. **Timeline tracker** — extracts a timeline of events and decisions as episodic memory candidates
 3. **Context weaver** — extracts patterns and contextual relationships as reflective memory candidates
 
-Extracted candidates are written directly to the memory-plus candidate queue for the relevant agent. They are not automatically promoted — a `memory_promote` or `memory_flush` call (or memory-plus's own passive hooks) handles promotion to durable memory.
+Extracted candidates are written directly to the memory-plus daily JSONL candidate queue for the relevant agent. They are not automatically promoted — a `memory_promote` or `memory_flush` call (or memory-plus's own passive hooks) handles promotion to durable memory.
 
 ### Watermark
 
 The observer tracks which session files it has already processed using a watermark file per agent at:
 ```
 .openclaw/agents/<agentId>/memory-plus/observer-watermark.json
+```
+
+Candidates are appended under:
+```
+.openclaw/agents/<agentId>/memory-plus/candidates/YYYY/YYYY-MM-DD.jsonl
 ```
 
 A session file is only processed once. Re-running on an already-processed file is a no-op unless the watermark is manually cleared.
